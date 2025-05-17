@@ -30,12 +30,61 @@ This file is part of the ALX Airbnb Database Module project and contains solutio
 - The subquery calculates the average rating for each property in the `reviews` table.
 - The main query filters `properties` where the `id` exists in the subquery results.
 
+
+# Aggregations and Window Functions
+
+This file is part of the ALX Airbnb Database Module project and contains SQL queries focused on aggregations and window functions for data analysis.
+
+## File
+
+- `aggregations_and_window_functions.sql`: SQL file with queries for counting bookings and ranking properties using window functions.
+
+## Tasks
+
+### 1. Total Number of Bookings per User
+
+**Objective**: Use the `COUNT` function with `GROUP BY` to determine how many bookings each user has made.
+
+# Aggregations and Window Functions
+
+This file is part of the ALX Airbnb Database Module project and contains SQL queries focused on aggregations and window functions for data analysis.
+
+## File
+
+- `aggregations_and_window_functions.sql`: SQL file with queries for counting bookings and ranking properties using window functions.
+
+## Tasks
+
+### 1. Total Number of Bookings per User
+
+**Objective**: Use the `COUNT` function with `GROUP BY` to determine how many bookings each user has made.
+
 ```sql
-SELECT p.id, p.name, p.location
-FROM properties p
-WHERE p.id IN (
-    SELECT r.property_id
-    FROM reviews r
-    GROUP BY r.property_id
-    HAVING AVG(r.rating) > 4.0
-);
+SELECT u.id, u.name, COUNT(b.id) AS total_bookings
+FROM users u
+LEFT JOIN bookings b ON u.id = b.user_id
+GROUP BY u.id, u.name
+ORDER BY total_bookings DESC;
+
+
+
+# Aggregations and Window Functions
+
+This file is part of the ALX Airbnb Database Module project and contains SQL queries focused on aggregations and window functions for data analysis.
+
+## File
+
+- `aggregations_and_window_functions.sql`: SQL file with queries for counting bookings and ranking properties using window functions.
+
+## Tasks
+
+### 1. Total Number of Bookings per User
+
+**Objective**: Use the `COUNT` function with `GROUP BY` to determine how many bookings each user has made.
+
+```sql
+SELECT u.id, u.name, COUNT(b.id) AS total_bookings
+FROM users u
+LEFT JOIN bookings b ON u.id = b.user_id
+GROUP BY u.id, u.name
+ORDER BY total_bookings DESC;
