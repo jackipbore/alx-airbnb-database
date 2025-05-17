@@ -24,11 +24,13 @@ SELECT
 FROM 
     properties p
 LEFT JOIN 
-    reviews r ON p.id = r.property_id;
+    reviews r ON p.id = r.property_id
+ORDER BY 
+    p.id;  -- 👈 Required ORDER BY added
 
 
 -- FULL OUTER JOIN: Retrieve all users and all bookings, even if the user has no booking or the booking is not linked to a user
--- MySQL/MariaDB does not support FULL OUTER JOIN directly; we simulate it using UNION of LEFT and RIGHT JOIN
+-- Simulated FULL OUTER JOIN using UNION
 
 SELECT 
     u.id AS user_id,
@@ -55,3 +57,4 @@ FROM
     users u
 RIGHT JOIN 
     bookings b ON u.id = b.user_id;
+
