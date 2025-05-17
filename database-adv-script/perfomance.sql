@@ -20,8 +20,10 @@ JOIN
 JOIN 
     properties p ON b.property_id = p.id
 LEFT JOIN 
-    payments pay ON b.id = pay.booking_id;
-
+    payments pay ON b.id = pay.booking_id
+WHERE 
+    b.status = 'confirmed'
+    AND b.booking_date > '2024-01-01';
 
 -- Optimized version of the query
 -- Assumes indexing on b.user_id, b.property_id, pay.booking_id
@@ -43,4 +45,7 @@ JOIN
 JOIN 
     properties p ON b.property_id = p.id
 LEFT JOIN 
-    payments pay ON b.id = pay.booking_id;
+    payments pay ON b.id = pay.booking_id
+WHERE 
+    b.status = 'confirmed'
+    AND b.booking_date > '2024-01-01';
